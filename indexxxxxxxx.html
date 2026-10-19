@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành CSS Flexbox - flex-wrap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+
+        /* Định dạng chung cho Container và Item */
+        .container {
+            display: flex;
+            width: 600px; /* Cố định chiều rộng container để ép các item phải xuống dòng */
+            gap: 10px;
+            border: 2px dashed #555;
+            background-color: #fff;
+            padding: 10px;
+        }
+
+        .item {
+            width: 180px; /* 180px * 4 item = 720px > 600px (chiều rộng container) */
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #333;
+            box-sizing: border-box;
+        }
+
+        /* --- CÁC TRƯỜNG HỢP CỦA FLEX-WRAP --- */
+
+        /* 1. nowrap (Mặc định) */
+        .wrap-nowrap {
+            flex-wrap: nowrap;
+        }
+        .wrap-nowrap .item { background-color: lightgreen; }
+
+        /* 2. wrap */
+        .wrap-wrap {
+            flex-wrap: wrap;
+        }
+        .wrap-wrap .item { background-color: lightblue; }
+
+        /* 3. wrap-reverse */
+        .wrap-reverse {
+            flex-wrap: wrap-reverse;
+        }
+        .wrap-reverse .item { background-color: lightcoral; }
+
+        /* 4. initial */
+        .wrap-initial {
+            flex-wrap: initial; /* Đưa về mặc định là nowrap */
+        }
+        .wrap-initial .item { background-color: lightyellow; }
+
+    </style>
+</head>
+<body>
+
+    <h2>1. flex-wrap: nowrap</h2>
+    <p>Các item bị ép phải nằm trên cùng một dòng. Do tổng chiều rộng các item lớn hơn container, chúng bị thu hẹp lại (bóp méo) hoặc tràn ra ngoài.</p>
+    <div class="container wrap-nowrap">
+        <div class="item">1</div><div class="item">2</div><div class="item">3</div><div class="item">4</div><div class="item">5</div><div class="item">6</div>
+    </div>
+
+    <h2>2. flex-wrap: wrap</h2>
+    <p>Khi không đủ chỗ, các item sẽ tự động rớt xuống dòng tiếp theo theo đúng thứ tự từ trên xuống dưới.</p>
+    <div class="container wrap-wrap">
+        <div class="item">1</div><div class="item">2</div><div class="item">3</div><div class="item">4</div><div class="item">5</div><div class="item">6</div>
+    </div>
+
+    <h2>3. flex-wrap: wrap-reverse</h2>
+    <p>Các item rớt dòng nhưng theo hướng ngược lại từ dưới lên trên. Chú ý: Dòng 1 chứa item 4, 5, 6 bị đẩy lên trên.</p>
+    <div class="container wrap-reverse">
+        <div class="item">1</div><div class="item">2</div><div class="item">3</div><div class="item">4</div><div class="item">5</div><div class="item">6</div>
+    </div>
+
+    <h2>4. flex-wrap: initial</h2>
+    <p>Thuộc tính được trả về giá trị mặc định của trình duyệt (chính là nowrap).</p>
+    <div class="container wrap-initial">
+        <div class="item">1</div><div class="item">2</div><div class="item">3</div><div class="item">4</div><div class="item">5</div><div class="item">6</div>
+    </div>
+
+</body>
+</html>
